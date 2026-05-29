@@ -183,5 +183,10 @@ namespace CalculatorApp2
             resultValue = Double.Parse(textBox1.Text);
             operationPerformed = "";
         }
+
+        private void button17_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
