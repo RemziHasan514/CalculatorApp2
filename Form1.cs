@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Globalization;
 
 namespace CalculatorApp2
 {
@@ -126,7 +127,7 @@ namespace CalculatorApp2
         {
             Button button = (Button)sender;
             operationPerformed = button.Text;
-            resultValue = Double.Parse(textBox1.Text);
+            resultValue = Double.Parse(textBox1.Text, CultureInfo.InvariantCulture);
             isOperationPerformed = true;
         }
 
@@ -134,7 +135,7 @@ namespace CalculatorApp2
         {
             Button button = (Button)sender;
             operationPerformed = button.Text;
-            resultValue = Double.Parse(textBox1.Text);
+            resultValue = Double.Parse(textBox1.Text, CultureInfo.InvariantCulture);
             isOperationPerformed = true;
         }
 
@@ -142,7 +143,7 @@ namespace CalculatorApp2
         {
             Button button = (Button)sender;
             operationPerformed = button.Text;
-            resultValue = Double.Parse(textBox1.Text);
+            resultValue = Double.Parse(textBox1.Text, CultureInfo.InvariantCulture);
             isOperationPerformed = true;
         }
 
@@ -150,7 +151,7 @@ namespace CalculatorApp2
         {
             Button button = (Button)sender;
             operationPerformed = button.Text;
-            resultValue = Double.Parse(textBox1.Text);
+            resultValue = Double.Parse(textBox1.Text, CultureInfo.InvariantCulture);
             isOperationPerformed = true;
         }
 
@@ -166,21 +167,21 @@ namespace CalculatorApp2
             switch (operationPerformed)
             {
                 case "+":
-                    textBox1.Text = (resultValue + Double.Parse(textBox1.Text)).ToString();
+                    textBox1.Text = (resultValue + Double.Parse(textBox1.Text, CultureInfo.InvariantCulture)).ToString(CultureInfo.InvariantCulture);
                     break;
                 case "-":
-                    textBox1.Text = (resultValue - Double.Parse(textBox1.Text)).ToString();
+                    textBox1.Text = (resultValue - Double.Parse(textBox1.Text, CultureInfo.InvariantCulture)).ToString(CultureInfo.InvariantCulture);
                     break;
                 case "*":
-                    textBox1.Text = (resultValue * Double.Parse(textBox1.Text)).ToString();
+                    textBox1.Text = (resultValue * Double.Parse(textBox1.Text, CultureInfo.InvariantCulture)).ToString(CultureInfo.InvariantCulture);
                     break;
                 case "/":
-                    textBox1.Text = (resultValue / Double.Parse(textBox1.Text)).ToString();
+                    textBox1.Text = (resultValue / Double.Parse(textBox1.Text, CultureInfo.InvariantCulture)).ToString(CultureInfo.InvariantCulture);
                     break;
                 default:
                     break;
             }
-            resultValue = Double.Parse(textBox1.Text);
+            resultValue = Double.Parse(textBox1.Text, CultureInfo.InvariantCulture);
             operationPerformed = "";
         }
 
@@ -211,5 +212,51 @@ namespace CalculatorApp2
                 textBox1.Text = value.ToString();
             }
         }
+
+        private void button19_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(textBox1.Text))
+            {
+                double val = double.Parse(textBox1.Text);
+                textBox1.Text = (val * -1).ToString();
+            }
+        }
+        private void btnSqrt_Click(object sender, EventArgs e)
+        {
+            if (double.TryParse(textBox1.Text, out double number))
+            {
+                if (number >= 0)
+                {
+                    double result = Math.Sqrt(number);
+                    textBox1.Text = result.ToString();
+                }
+                else
+                {
+                    textBox1.Text = "Invalid Input";
+                }
+            }
+        }
+            private void btnSquare_Click(object sender, EventArgs e)
+        {
+            if (double.TryParse(textBox1.Text, out double number))
+            {
+                double result = Math.Pow(number, 2);
+                textBox1.Text = result.ToString();
+            }
+        }
+            private void btnDecimal_Click(object sender, EventArgs e)
+        {
+            // Check if the display is empty. If it is, start with "0."
+            if (string.IsNullOrEmpty(textBox1.Text))
+            {
+                textBox1.Text = "0.";
+            }
+            // Check if the text already contains a decimal point. If it doesn't, add one.
+            else if (!textBox1.Text.Contains("."))
+            {
+                textBox1.Text += ".";
+            }
+        }
     }
+    
 }
