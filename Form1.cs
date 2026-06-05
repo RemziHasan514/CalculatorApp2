@@ -186,7 +186,30 @@ namespace CalculatorApp2
 
         private void button17_Click(object sender, EventArgs e)
         {
+            if (textBox1.Text.Length > 0)
+            {
+                textBox1.Text = textBox1.Text.Substring(0, textBox1.Text.Length - 1);
+            }
 
+            if (textBox1.Text == "")
+            {
+                textBox1.Text = "0";
+            }
+        }
+
+        private void button18_Click(object sender, EventArgs e)
+        {
+            if (textBox1.Text.Length > 0)
+            {
+                 
+                double value = double.Parse(textBox1.Text);
+
+                 
+                value = value / 100;
+
+                
+                textBox1.Text = value.ToString();
+            }
         }
     }
 }
