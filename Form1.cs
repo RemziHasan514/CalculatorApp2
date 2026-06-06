@@ -172,7 +172,7 @@ namespace CalculatorApp2
                 case "-":
                     textBox1.Text = (resultValue - Double.Parse(textBox1.Text, CultureInfo.InvariantCulture)).ToString(CultureInfo.InvariantCulture);
                     break;
-                case "*":
+                case "X":
                     textBox1.Text = (resultValue * Double.Parse(textBox1.Text, CultureInfo.InvariantCulture)).ToString(CultureInfo.InvariantCulture);
                     break;
                 case "/":
